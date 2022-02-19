@@ -19,11 +19,11 @@ RUN yum -y  install openssh-server
 ######## centos 08 #########
 
 RUN useradd remote_user && \
-    echo "remote_user:1234" | chpasswd && \
+    echo "remote_user:ur_pass" | chpasswd && \
     mkdir /home/remote_user/.ssh && \
     chmod 700 /home/remote_user/.ssh
 
-COPY remote-key.pub  /home/remote_user/.ssh/authorized.keys
+COPY ur_key.pub  /home/remote_user/.ssh/authorized.keys
 
 RUN chown remote_user:remote_user  /home/remote_user/.ssh/ && \
     chmod 600 /home/remote_user/.ssh/authorized.keys
